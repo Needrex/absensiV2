@@ -1,4 +1,5 @@
 import Joi from "joi"
+import { cekEmail } from "../../middleware/cekEmail.js"
 
 export const validationRegis = Joi.object({
    nama: Joi.string().min(5).max(10).required(),
@@ -9,7 +10,7 @@ export const validationRegis = Joi.object({
 })
 
 export const validationLogin = Joi.object({
-   email: Joi.string().required().email().lowercase(),
+   email: Joi.string().required().lowercase().email(),
    username: Joi.string().required(),
    password: Joi.string().required(),
 })

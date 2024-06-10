@@ -25,12 +25,12 @@ routeUser.param('id', async (req, res, next, value) => {
 
 routeUser.route('/')
    .get(authorize('user'), getUser)
-   .post(inputUser)
+   .post(authorize('user'), inputUser)
 
 routeUser.route('/:id')
-   .get(getUserbyID)
-   .delete(deleteUser)
-   .patch(updateUser)
+   .get(authorize('user'), getUserbyID)
+   .delete(authorize('user'), deleteUser)
+   .patch(authorize('user'), updateUser)
 
 
 export { routeUser }

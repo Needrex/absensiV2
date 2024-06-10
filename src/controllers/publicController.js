@@ -56,3 +56,12 @@ export const loginUser = async (req, res, next) => {
       next(e)
    }
 }
+
+export const logoutUser = async (req, res, next) => {
+   try {
+      res.clearCookie('tkt')
+      respons(res, 200, '', 'Berhasil logout')
+   } catch (e) {
+      next(e)
+   }
+}
